@@ -1,0 +1,48 @@
+.information_container{
+    padding: 5px;
+    border-radius: 10px;
+    width: 20%;
+    margin: 5% auto;
+    text-align: center;
+    height: 500px;
+}
+
+.input-active {
+    font-style: oblique;
+}
+
+.information_container .submit_button{
+    display: none;
+}
+
+.password_change{
+    display: none;
+}
+
+@media screen and (max-width: 1440px) {
+
+    .information_container {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .information_container {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 992px){
+
+    .information_container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 424px){
+
+    .information_container {
+        width: 80%;
+        height: 400px;
+    }
+}

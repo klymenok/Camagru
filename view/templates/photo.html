@@ -1,0 +1,32 @@
+<head>
+    <title>Photo</title>
+</head>
+<div class="photo_container main_view">
+    <img src="" onclick="openPhoto(this)">
+    <div class="photo_toolbar">
+        <i class="icon icon-heart" onclick="like(this)"></i>
+        <div class="photo_info">
+            Published by <span class="username"></span><br>
+            Likes: <span class="likes_count"></span>
+            Comments: <span class="comments_count"></span>
+        </div>
+        <i class="icon icon-trash" onclick="deletePhoto(this)"></i>
+    </div>
+    <div class="comments_list">  Comments: <br>
+        <div class="comments-container"></div>
+        <div class="new_comment">
+            <div class="form-container">
+                <form id="comment_form" method="post" onsubmit="sendComment()">
+                    <input class="comment_field" type="text" placeholder="Write comment here">
+                    <textarea title="comment" class="comment-text" required placeholder="Write comment here..."></textarea>
+                    <input class="submit-comment" type="submit" value="send">
+                </form>
+            </div>
+            <div class="send-comment-button">
+                <i class="icon icon-paper-plane" onclick="sendComment()"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="<?='//' . $_SERVER['HTTP_HOST'] . '/' ?>camagru/view/js/photo.js"></script>
+

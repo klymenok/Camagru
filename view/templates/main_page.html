@@ -1,0 +1,70 @@
+<head>
+    <title>Take photo</title>
+</head>
+<div class="main_page_top">
+    <div class="stickers_side" onload="getStickers()">
+        <h1 class="center"><span class="title">Stickers</span>
+            <i class="icon icon-plus" data-title="Софийский собор">
+                <form id="add_sticker" onsubmit="uploadSticker()" method="post" enctype="multipart/form-data" style="display: none">
+                    <input type="file" name="sticker_upload" id="sticker_upload" accept="image/png" value="">
+                    <input type="submit" id="submit_sticker" name="submit">
+                </form>
+            </i><span class="info">png, 128x128px</span>
+        </h1>
+        <div class="circle">
+            <div class="circle1 sk-child"></div>
+            <div class="circle2 sk-child"></div>
+            <div class="circle3 sk-child"></div>
+            <div class="circle4 sk-child"></div>
+            <div class="circle5 sk-child"></div>
+            <div class="circle6 sk-child"></div>
+            <div class="circle7 sk-child"></div>
+            <div class="circle8 sk-child"></div>
+            <div class="circle9 sk-child"></div>
+            <div class="circle10 sk-child"></div>
+            <div class="circle11 sk-child"></div>
+            <div class="circle12 sk-child"></div>
+        </div>
+    </div>
+    <div class="camera_side stop-scrolling">
+        <div class="camera_container">
+            <video id="video" autoplay></video>
+            <div class="canvas_preview">
+                <canvas class="preview"></canvas>
+            </div>
+            <div class="photo_upload_container">
+                <img id="upload">
+            </div>
+            <div class="stickers"></div>
+            <div class="camera_toolbar">
+                <div class="camera_toolbar_left">
+                    <i class="icon icon-arrows-cw" id="clear_button"></i>
+                </div>
+                <div class="camera_toolbar_button">
+                    <div id="take_photo_button"></div>
+                </div>
+                <div class="camera_toolbar_right">
+                    <i class="icon icon-attach">
+                        <form id="upload_form" onsubmit="uploadImage()" method="post" enctype="multipart/form-data" style="display: none">
+                            <input type="file" name="photo_upload" id="photo_upload" accept="image/*" value="">
+                            <input type="submit" id="submit" name="submit">
+                        </form>
+                    </i>
+                    <i class="icon icon-cancel" id="cancel_upload_button"></i>
+                    <i class="icon icon-floppy" id="save_uploaded_photo_button"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="preview_template">
+        <canvas class="canvas"></canvas>
+        <div class="post_button">
+            <i class="icon icon-ok-circled"></i>
+        </div>
+    </div>
+    <div class="preview_side">
+        <h1 class="center"><span class="title">Preview</span></h1>
+    </div>
+</div>
+<script type="text/javascript" src="<?='//' . $_SERVER['HTTP_HOST'] . '/' ?>camagru/view/js/main.js"></script>

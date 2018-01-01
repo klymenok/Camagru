@@ -1,0 +1,36 @@
+<head>
+    <title>Login</title>
+</head>
+<div class="main_container">
+    <div class="container">
+        <div class="div_login_form">
+            <form id="login_form" method="post"  onsubmit="logIn()">
+                <p class="login_text">Please, login your account:</p>
+                <div class="error_login_message"></div>
+                <input type="text" id="name" name="login" value="" placeholder="login" required>
+                <input type="password" name="passwd" value="" placeholder="password" required>
+                <input class="submit_button" type="submit" value="OK">
+                <div class="underform_links left" onclick="showForgotForm()">Forgot your password?</div>
+                <div class="underform_links right" onclick="showCreateForm()">Create an account</div>
+            </form>
+            <form id="create_user_form" method="post"  onsubmit="createAccount()">
+                <p class="login_text">Create a new account:</p>
+                <div class="error_login_message"></div>
+                <input type="text" name="login" value="" placeholder="login" required>
+                <input type="email" name="email" value="" placeholder="email" required>
+                <input type="password" name="passwd" value="" placeholder="password" required>
+                <input type="password" name="passwd_conf" value="" placeholder="confim password" required>
+                <input class="submit_button" type="submit" value="Create account">
+            </form>
+            <form id="forgot_form" method="post"  onsubmit="resetPassword()">
+                <p class="login_text">Enter your login or email:</p>
+                <div class="error_login_message"></div>
+                <input type="text" name="login" value="" placeholder="login/email" required>
+                <input class="submit_button" type="submit" value="Reset password">
+            </form>
+            <div class="password_reset">We sent an email to you. Please, check your mail and follow instructions</div>
+            <div class="account_created">Please, check your email, you will find there link, please click on it to confirm registration</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="<?='//' . $_SERVER['HTTP_HOST'] . '/' ?>camagru/view/js/login.js"></script>
