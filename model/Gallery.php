@@ -167,7 +167,7 @@ class Gallery extends Connection
             $response->execute();
             $user = $response->fetchColumn();
             if ($user === $userId) {
-                $this->delete($photoId);
+                $this->delete($photoId, $name);
                 return json_encode(['success' => 'deleted']);
             }
             return json_encode(['error' => 'permission denied']);
@@ -176,11 +176,13 @@ class Gallery extends Connection
         }
     }
 
-    private function delete($id) {
+    private function delete($id, $name) {
         $query = "DELETE FROM photos WHERE photo_id=" . $id;
         try {
             $request = $this->pdo->prepare($query);
-            $request->execute();
+            if ($request->execute()) {
+                unlink(RT . $this->_collectionPath . '/' . $name);
+            }
         } catch (\PDOException $e) {}
     }
 

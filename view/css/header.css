@@ -59,6 +59,12 @@ body {
     transition: all 600ms;
 }
 
+.noroute {
+    margin: auto;
+    text-align: center;
+    font-size: xx-large;
+    height: 300px;
+}
 
 .active {
     opacity: 1!important;

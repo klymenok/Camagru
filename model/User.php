@@ -93,10 +93,15 @@ class User extends Connection
     }
 
     public function createUser() {
+
         $pass = hash('whirlpool', $_POST['passwd']);
         $login = $_POST['login'];
         $confirm = hash('whirlpool', $_POST['passwd_conf']);
         $email = $_POST['email'];
+
+        if (strlen($_POST['passwd']) < 6) {
+            return "Password is too short, enter at least 6 symbols";
+        }
         if ($pass !== $confirm) {
             return "Passwords doesn't match";
         }
@@ -110,7 +115,7 @@ class User extends Connection
         try {
             $this->pdo->prepare($query)->execute();
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return "Database error, try to config";
         }
         $confirmationCode = $this->createConfirmationCode($email);
         $this->sendConfirmationEmail($email, $confirmationCode);
@@ -154,8 +159,14 @@ class User extends Connection
 
     public function isUserExist() {
 
-        if (!$this->isUserAlreadyExist($_POST['login'], $_POST['email'])) {
-            return false;
+        if (array_key_exists('login', $_POST)) {
+            if (!$this->isUserAlreadyExist($_POST['login'], $_POST['login'])) {
+                return false;
+            }
+        } else if (array_key_exists('email', $_POST)) {
+            if (!$this->isUserAlreadyExist($_POST['email'], $_POST['email'])) {
+                return false;
+            }
         } else {
             return true;
         }

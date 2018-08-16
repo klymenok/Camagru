@@ -8,6 +8,11 @@ function uploadImage() {
             var container = document.querySelector('.photo_upload_container');
             image.src = "/camagru/view/images/tmp/" + JSON.parse(xhr.response)['success'];
             container.style.opacity = 1;
+            if (!document.querySelector('.icon-cancel').classList.contains('toolbar_active')) {
+                document.querySelector('.icon-cancel').classList.add('toolbar_active');
+                document.querySelector('.icon-floppy').classList.add('toolbar_active');
+                document.querySelector('.icon-attach').classList.add('toolbar_active');
+            }
         } else if ('error' in JSON.parse(xhr.response)){
             alert(JSON.parse(xhr.response)['error']);
         } else {
@@ -347,11 +352,6 @@ document.querySelector('.icon-plus').addEventListener('click', function () {
 
 document.querySelector("#photo_upload").onchange = function() {
     document.querySelector("#submit").click();
-    if (!document.querySelector('.icon-cancel').classList.contains('toolbar_active')) {
-        document.querySelector('.icon-cancel').classList.add('toolbar_active');
-        document.querySelector('.icon-floppy').classList.add('toolbar_active');
-        document.querySelector('.icon-attach').classList.add('toolbar_active');
-    }
 };
 
 document.querySelector("#sticker_upload").onchange = function() {

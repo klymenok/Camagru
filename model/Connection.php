@@ -9,9 +9,9 @@ class Connection
 {
     private $dsn = "mysql:host=localhost;dbname=camagru;charset=utf8";
 
-    private $user = "enter_username_here";
+    private $user = "root";
 
-    private $passwd = "enter_password_here";
+    private $passwd = "KfGjX1988Rf";
 
     protected $pdo;
 
@@ -26,6 +26,12 @@ class Connection
     {
         $this->pdo = $this->initPDO();
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (!file_exists(RT . $this->_collectionPath)) {
+            mkdir(RT . $this->_collectionPath);
+        }
+        if (!file_exists(RT . $this->_tmpPath)) {
+            mkdir(RT . $this->_tmpPath);
+        }
     }
 
     private function initPDO()

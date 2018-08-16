@@ -80,7 +80,7 @@ class Camera extends Connection
 
     private function createTemporaryFile() {
         $filetype = explode('.', $_FILES['photo_upload']['name']);
-        $resizer = new ImageRedactor($_FILES['photo_upload']['tmp_name'], $filetype[1], $this->_stickerPath);
+        $resizer = new ImageRedactor($_FILES['photo_upload']['tmp_name'], $filetype[1], $this->_tmpPath);
         $resizer->splitImage();
         $resizer->saveResizedImage();
         $new_filename = $resizer->newImageName;
